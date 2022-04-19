@@ -49,7 +49,7 @@ def checkServer(host):
 	aimurl = "http://"+host+":443"
 	response = requests.get(url=aimurl,headers=header,timeout=10)
 	serverText = response.headers['server']
-	if (serverText == "CloudFront"):
+	if (serverText == "cloudflare"):
 		print("NewNode:" + host +" has been catched!\n")
 		if MUTEX.acquire(3):
 			with open("result.txt","a+") as file:
