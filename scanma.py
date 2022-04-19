@@ -40,7 +40,7 @@ class tThread(threading.Thread):
 
 def checkalive():
 	print('\n[Step1] Scanning alive servers:\n')
-	zmap = os.popen('zmap -w iplist.txt --interface=venet0 -p 443 -B 30M')
+	zmap = os.popen('zmap --interface=venet0 -w iplist.txt -p 443 -B 30M')
 	global IPLIST
 	IPLIST = zmap.read().splitlines()
 
