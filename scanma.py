@@ -40,7 +40,7 @@ class tThread(threading.Thread):
 
 def checkalive():
 	print('\n[Step1] Scanning alive servers:\n')
-	zmap = os.popen(masscan/bin/masscan -sS -Pn -n -p443 --rate 500 -iL iplist.txt | awk '{print $6}')
+	nmap -sS -Pn --open --min-hostgroup 100 --min-parallelism 100 -n -T4 -iL iplist.txt -p443 -vv | awk '/Discovered open port 443\/tcp/{print $6}'
 	global IPLIST
 	IPLIST = zmap.read().splitlines()
 
